@@ -1,17 +1,27 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>Cartão Dia das Mães</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap');
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 .cartao-wrapper {
-  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding: 1.2rem 0.75rem 2rem;
-  position: relative;
-  overflow: hidden;
+  padding: 1rem;
   background: linear-gradient(135deg, #fff5f8 0%, #fffaf0 100%);
 }
 
@@ -20,55 +30,45 @@
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  width: 100%;
-  height: 100%;
 }
 
 .card {
   background: white;
-  border-radius: 20px;
-  padding: 1.5rem 1.1rem;
+  border-radius: 18px;
+  padding: 1.6rem 1.2rem;
   width: 100%;
-  max-width: 420px;
+  max-width: 380px;
   text-align: center;
-  border: 0.5px solid #f0c8d8;
+  border: 1px solid #f0c8d8;
   position: relative;
   z-index: 10;
 }
 
 .card-title {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(2rem, 8vw, 2.8rem);
+  font-size: clamp(1.8rem, 7vw, 2.4rem);
   color: #c47b5a;
-  margin-bottom: 0.15rem;
-  line-height: 1.2;
+  margin-bottom: 0.3rem;
 }
 
 .card-sub {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(9px, 2.5vw, 12px);
+  font-size: 11px;
   color: #c47b5a;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  opacity: 0.7;
-  margin-bottom: 1.2rem;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.4rem;
 }
 
 .open-btn {
   background: linear-gradient(135deg, #d4a373, #c47b5a);
   color: white;
   border: none;
-  padding: 14px 36px;
-  border-radius: 50px;
+  padding: 16px;
+  border-radius: 40px;
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(13px, 3.5vw, 15px);
-  font-weight: 500;
+  font-size: 14px;
   cursor: pointer;
-  letter-spacing: 1px;
   width: 100%;
-  max-width: 260px;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .conteudo {
@@ -76,16 +76,20 @@
   opacity: 0;
   transition: opacity 1.2s ease;
 }
-.conteudo.visivel { display: block; opacity: 1; }
+
+.conteudo.visivel {
+  display: block;
+  opacity: 1;
+}
 
 .mensagem {
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
-  font-size: clamp(12px, 3.2vw, 14px);
+  font-size: 14px;
   color: #8a6a5a;
-  line-height: 1.75;
+  line-height: 1.8;
   margin: 1rem 0;
-  padding: 0.9rem 1rem;
+  padding: 1rem;
   background: #fff8f3;
   border-radius: 12px;
   border-left: 3px solid #d4a373;
@@ -95,32 +99,20 @@
 /* Carrossel */
 .carrossel {
   position: relative;
-  margin: 0.8rem 0 0;
-  border-radius: 14px;
+  margin-top: 1rem;
+  border-radius: 12px;
   overflow: hidden;
-  animation: glow-anim 3s infinite alternate;
-  touch-action: pan-y;
-}
-
-@keyframes glow-anim {
-  from { box-shadow: 0 0 4px rgba(212,163,115,0.2); }
-  to   { box-shadow: 0 0 18px rgba(212,163,115,0.55); }
 }
 
 .carrossel-track {
   display: flex;
   transition: transform 0.45s ease;
-  will-change: transform;
 }
 
 .carrossel-track img {
   min-width: 100%;
   width: 100%;
-  height: auto;
-  display: block;
   object-fit: contain;
-  -webkit-user-drag: none;
-  user-select: none;
 }
 
 .carr-btn {
@@ -129,19 +121,13 @@
   transform: translateY(-50%);
   background: rgba(255,255,255,0.8);
   border: none;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  cursor: pointer;
-  font-size: 20px;
+  font-size: 22px;
   color: #c47b5a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
 }
+
 .carr-btn.prev { left: 6px; }
 .carr-btn.next { right: 6px; }
 
@@ -149,86 +135,93 @@
   display: flex;
   justify-content: center;
   gap: 7px;
-  margin: 8px 0 0;
+  margin-top: 8px;
 }
+
 .carr-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #e0c4b4;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
 }
-.carr-dot.ativo { background: #c47b5a; transform: scale(1.35); }
+
+.carr-dot.ativo {
+  background: #c47b5a;
+  transform: scale(1.3);
+}
 
 /* YouTube */
-.yt-section { margin: 1.1rem 0 0.3rem; }
+.yt-section { margin-top: 1rem; }
+
 .yt-label {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(9px, 2.5vw, 11px);
+  font-family: 'Montserrat';
+  font-size: 10px;
   color: #b08070;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 7px;
+  margin-bottom: 6px;
 }
+
 .yt-frame {
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  width: 100%;
   aspect-ratio: 16/9;
-  border: 0.5px solid #f0c8d8;
 }
-.yt-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+
+.yt-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
 .footer {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(1.3rem, 5vw, 1.7rem);
+  font-family: 'Great Vibes';
+  font-size: 1.5rem;
   color: #c47b5a;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
 }
 </style>
+</head>
+
+<body>
 
 <div class="cartao-wrapper">
-  <canvas class="heart-canvas" id="hCanvas"></canvas>
+<canvas class="heart-canvas" id="hCanvas"></canvas>
 
-  <div class="card">
-    <div class="card-title">Feliz Dia das Mães</div>
-    <div class="card-sub">com todo amor do mundo</div>
+<div class="card">
+<div class="card-title">Feliz Dia das Mães</div>
+<div class="card-sub">com todo amor do mundo</div>
 
-    <button class="open-btn" id="openBtn" onclick="abrirCartao()">Abrir com Amor</button>
+<button class="open-btn" onclick="abrirCartao()">Abrir com Amor</button>
 
-    <div class="conteudo" id="conteudo">
+<div class="conteudo" id="conteudo">
 
-      <div class="mensagem">
-        "Seu amor é o solo onde floresci, sua voz é a música que me guia. Obrigada por existir, mamãe."
-      </div>
+<div class="mensagem">
+"Seu amor é o solo onde floresci, sua voz é a música que me guia. Obrigada por existir, mamãe."
+</div>
 
-      <div class="carrossel" id="carrossel">
-        <div class="carrossel-track" id="track">
-          <img src="https://images.pexels.com/photos/4513729/pexels-photo-4513729.jpeg" alt="foto 1">
-          <img src="https://images.pexels.com/photos/31848490/pexels-photo-31848490.jpeg" alt="foto 2">
-          <img src="https://images.pexels.com/photos/9455848/pexels-photo-9455848.jpeg" alt="foto 3">
-        </div>
-        <button class="carr-btn prev" onclick="mover(-1)">&#8249;</button>
-        <button class="carr-btn next" onclick="mover(1)">&#8250;</button>
-      </div>
+<div class="carrossel" id="carrossel">
+<div class="carrossel-track" id="track">
+<img src="https://images.pexels.com/photos/4513729/pexels-photo-4513729.jpeg">
+<img src="https://images.pexels.com/photos/31848490/pexels-photo-31848490.jpeg">
+<img src="https://images.pexels.com/photos/9455848/pexels-photo-9455848.jpeg">
+</div>
 
-      <div class="carr-dots" id="dots"></div>
+<button class="carr-btn prev" onclick="mover(-1)">‹</button>
+<button class="carr-btn next" onclick="mover(1)">›</button>
+</div>
 
-      <div class="yt-section">
-        <div class="yt-label">Uma música especial para você</div>
-        <div class="yt-frame">
-          <iframe
-            src="https://www.youtube.com/embed/d9IxdwEFk1c?autoplay=1&controls=1&rel=0&modestbranding=1"
-            allow="autoplay; encrypted-media"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
+<div class="carr-dots" id="dots"></div>
 
-      <div class="footer">Com amor infinito 💖</div>
-    </div>
-  </div>
+<div class="yt-section">
+<div class="yt-label">Uma música especial</div>
+<div class="yt-frame">
+<iframe src="https://www.youtube.com/embed/d9IxdwEFk1c?autoplay=1"></iframe>
+</div>
+</div>
+
+<div class="footer">Com amor infinito 💖</div>
+
+</div>
+</div>
 </div>
 
 <script>
@@ -258,16 +251,21 @@ function irPara(idx) {
 }
 
 function mover(dir) { irPara(atual + dir); }
-setInterval(() => mover(1), 4000);
 
-// Swipe touch
+let autoSlide = setInterval(() => mover(1), 4000);
+
 const carr = document.getElementById('carrossel');
 let touchStartX = 0;
-carr.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+
+carr.addEventListener('touchstart', e => {
+  clearInterval(autoSlide);
+  touchStartX = e.touches[0].clientX;
+});
+
 carr.addEventListener('touchend', e => {
   const diff = touchStartX - e.changedTouches[0].clientX;
   if (Math.abs(diff) > 40) mover(diff > 0 ? 1 : -1);
-}, { passive: true });
+});
 
 // Corações
 const canvas = document.getElementById('hCanvas');
@@ -311,23 +309,34 @@ function drawHeart(hx, hy, size, color, opacity) {
 
 function loop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  if (Math.random() < 0.18) hearts.push(randomHeart());
+  if (Math.random() < 0.08) hearts.push(randomHeart());
+
   for (let i = hearts.length-1; i >= 0; i--) {
     const h = hearts[i];
-    h.y += h.speed; h.x += h.drift + Math.sin(h.angle)*0.5;
-    h.angle += 0.04; h.opacity -= 0.003;
+    h.y += h.speed;
+    h.x += h.drift + Math.sin(h.angle)*0.5;
+    h.angle += 0.04;
+    h.opacity -= 0.003;
+
     drawHeart(h.x, h.y, h.size, h.color, Math.max(0, h.opacity));
-    if (h.y > canvas.height+30 || h.opacity <= 0) hearts.splice(i,1);
+
+    if (h.y > canvas.height+30 || h.opacity <= 0) {
+      hearts.splice(i,1);
+    }
   }
+
   requestAnimationFrame(loop);
 }
 loop();
 
 function abrirCartao() {
-  document.getElementById('openBtn').style.display = 'none';
+  document.querySelector('.open-btn').style.display = 'none';
   const c = document.getElementById('conteudo');
   c.style.display = 'block';
   setTimeout(() => c.style.opacity = '1', 50);
-  c.classList.add('visivel');
 }
 </script>
+
+</body>
+</html>
+```
